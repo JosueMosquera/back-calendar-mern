@@ -23,6 +23,7 @@ const crearUsuario = async (req = request, res = response) => {
       msg: "nice registro",
       uid: usuario.id,
       email: usuario.email,
+      name:usuario.name,
       token
     });
   }
@@ -49,11 +50,14 @@ const loginUsuario = async (req, res) => {
       msg: "login",
       uid: usuario.id,
       email: usuario.email,
+      name:usuario.name,
       token
     });
   } 
   catch (error) {
-
+      return res.status(400).json({
+        ok:false
+      })
   }
 }
 const revalidarToken = async(req, res) => {
